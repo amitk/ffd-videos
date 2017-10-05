@@ -3,9 +3,12 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   it "registered user must have a name" do
     user = create :user
+    expect(user.name).to be_truthy
   end
 
   it "registered user must have a email" do
+    user = create :user
+    expect(user.email).to be_truthy
   end
 
   it "registered user must have a password" do

@@ -22,6 +22,12 @@ RSpec.describe User, type: :model do
     expect(User.subscribed.to_a).not_to include(user_3)
   end
 
+  it "should return true if user is admin" do
+    role = create :role, :admin
+    user_1 = create :user
+    user_1.roles << role
+    expect(user_1.role_ids.to_a.include?(role.id)).to be true
+  end
   # it "registered user cannot upload videos" do
   # end
   #

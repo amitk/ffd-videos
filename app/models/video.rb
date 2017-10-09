@@ -8,7 +8,7 @@ class Video
   # To set the time span for viewing subscribed video
   field :view_span,   type: Integer, default: nil
 
-  validates :name, :type, :duration, presence: true
+  validates :name, :type, :url, presence: true
   validates :type, inclusion: { in: %w(free registered subscribed) }
   validate :view_limit_or_span
 

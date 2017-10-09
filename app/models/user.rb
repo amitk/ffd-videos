@@ -6,7 +6,8 @@ class User
   field :subscribe,   type: Boolean, default: false
 
   validates :name, :email, presence: true
-  validates_email_format_of :email, message: "Invalid email address"
+
+  has_many :user_videos
 
   scope :registered, -> { where(subscribe: false) }
   scope :subscribed, -> { where(subscribe: true) }

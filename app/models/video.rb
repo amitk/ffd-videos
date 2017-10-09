@@ -3,14 +3,16 @@ class Video
 
   field :name,        type: String
   field :type,        type: String, default: 'free'
-  field :duration,    type: Integer
+  field :url,         type: String
   field :view_limit,  type: Integer, default: nil
-  # To set the time span for viewing subscribed videos
-  field :view_span,        type: Integer, default: nil
+  # To set the time span for viewing subscribed video
+  field :view_span,   type: Integer, default: nil
 
   validates :name, :type, :duration, presence: true
   validates :type, inclusion: { in: %w(free registered subscribed) }
   validate :view_limit_or_span
+
+  has_many :user_videos
 
   scope :free, -> { where(type: 'free')}
   scope :registered, -> { where(type: 'registered') }

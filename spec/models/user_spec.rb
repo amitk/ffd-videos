@@ -28,6 +28,7 @@ RSpec.describe User, type: :model do
     user_1.roles << role
     expect(user_1.role_ids.to_a.include?(role.id)).to be true
   end
+
   # it "registered user cannot upload videos" do
   # end
   #

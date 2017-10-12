@@ -39,13 +39,12 @@ class User
   field :email,       type: String
   field :subscribe,   type: Boolean, default: false
 
-  validates :name, :email, presence: true
-
-  has_many :user_videos
+  has_many :user_contents
   has_and_belongs_to_many :roles, inverse_of: nil
 
   scope :registered, -> { where(subscribe: false) }
   scope :subscribed, -> { where(subscribe: true) }
 
+  validates :name, presence: true
 
 end

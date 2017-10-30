@@ -1,0 +1,4 @@
+= simple_form_for @content, url: contents_path do |f|
+  = f.input :name, label: 'Name'
+  = f.input :file, as: :file
+  = f.button :submit

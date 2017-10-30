@@ -4,7 +4,7 @@ class Content
   field :name,        type: String
   # field :type,        type: String
   field :category,    type: String, default: 'free'
-  field :url,         type: String
+  # field :url,         type: String
   field :view_limit,  type: Integer, default: nil
   # To set the time span for viewing subscribed video
   field :view_span,   type: Integer, default: nil
@@ -15,7 +15,7 @@ class Content
   scope :registered, -> { where(category: 'registered') }
   scope :subscribed, -> { where(category: 'subscribed') }
 
-  validates :name, :category, :url, presence: true
+  # validates :name, :category, :url, presence: true
   validates :category, inclusion: { in: %w(free registered subscribed) }
   validate :view_limit_or_span
 

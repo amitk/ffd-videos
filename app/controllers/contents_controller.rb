@@ -5,12 +5,14 @@ class ContentsController < ApplicationController
   end
 
   def new
+    @content = Content.new
   end
 
   def show
   end
 
   def create
+    Content.create(content_params)
   end
 
   def content_params

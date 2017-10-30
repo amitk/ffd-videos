@@ -36,7 +36,12 @@ gem 'devise'
 gem "haml-rails", "~> 1.0"
 
 gem 'carrierwave'
+
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
+gem 'fog'
+
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

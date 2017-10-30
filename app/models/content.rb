@@ -19,6 +19,8 @@ class Content
   validates :category, inclusion: { in: %w(free registered subscribed) }
   validate :view_limit_or_span
 
+  mount_uploader :file, FileUploader
+
   private
 
   def view_limit_or_span

@@ -35,12 +35,18 @@ gem 'devise'
 # gem to convert and generate .haml files
 gem "haml-rails", "~> 1.0"
 
+gem 'rmagick'
+# this gem is to enable file upload feature in rails application
 gem 'carrierwave'
-
+# this gem is to mount file uploader on a mongoid based model
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-
+# gem for interfacing between rails application and cloud resources
 gem 'fog'
-
+# gem for enabling video file upload
+gem 'carrierwave-video'
+# gem for creating thumbnail for video file
+gem 'carrierwave-video-thumbnailer'
+# gem to create forms in rails application
 gem 'simple_form'
 
 group :development, :test do

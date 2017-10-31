@@ -10,14 +10,14 @@ CarrierWave.configure do |config|
   #config.fog_public     = false                                  # optional, defaults to true
   config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   # Use local storage if in development or test
-  if Rails.env.development? || Rails.env.test?
+  if Rails.env.test?
     CarrierWave.configure do |config|
       config.storage = :file
     end
   end
 
   # Use AWS storage if in production
-  if Rails.env.production?
+  if Rails.env.production? || Rails.env.development?
     CarrierWave.configure do |config|
       config.storage = :fog
     end

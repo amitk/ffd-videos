@@ -12,11 +12,17 @@ class ContentsController < ApplicationController
   end
 
   def create
-    Content.create(content_params)
+    content = Content.new(content_params)
+    if content.valid?
+      content.save
+    else
+      p content.errors
+    end
   end
 
   def content_params
     params.require(:content).permit(:name, :category, :url, :view_limit, :view_span, :file)
+
   end
 
 end

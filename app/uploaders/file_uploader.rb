@@ -1,7 +1,9 @@
 class FileUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
+  include CarrierWave::Video
+  include CarrierWave::Video::Thumbnailer
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -21,6 +23,7 @@ class FileUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+  process encode_video: [:mp4, resolution: "200x200"]
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
@@ -30,9 +33,30 @@ class FileUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+  version :thumb, if: :image? do
+    process resize_to_fit: [192, 192]
+  end
+
+  version :thumb_video, if: :video? do
+    process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
+    def full_filename for_file
+      png_name for_file, version_name
+    end
+  end
+
+  version :thumb_pdf, if: :pdf? do
+    process :cover
+    process resize_to_fit: [192, 192]
+    process convert: :jpg
+    def full_filename for_file
+      super.chomp(File.extname(super)) + '.jpg'
+    end
+  end
+
+  def png_name for_file, version_name
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -45,5 +69,30 @@ class FileUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  # def encode
+  #   video = FFMPEG::Movie.new(@file.path)
+  #   video_transcode = video.transcode(@file.path)
+  # end
+
+  protected
+
+  def image?(file)
+    file.content_type.include? 'image'
+  end
+
+  def video?(file)
+    file.content_type.include? 'video'
+  end
+
+  def pdf?(file)
+    file.content_type.include? 'pdf'
+  end
+
+  def cover
+    manipulate! do |frame, index|
+      frame if index.zero?
+    end
+  end
 
 end

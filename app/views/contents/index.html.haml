@@ -1,6 +1,11 @@
 - @contents.each do |content|
+  - if content.file?
+    - if content.file.content_type.include? 'video'
+      = link_to (image_tag content.file_url(:thumb_video)), content.file_url
+    - if content.file.content_type.include? 'image'
+      = link_to (image_tag content.file_url(:thumb)), content.file_url
+    - if content.file.content_type.include? 'pdf'
+      = link_to (image_tag content.file_url(:thumb_pdf)), content.file_url
   = content.name
-  = content.view_limit
-  = content.view_span
-
-= link_to "New Content", new_content_path
+%br
+  = link_to "New Content", new_content_path

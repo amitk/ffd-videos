@@ -6,6 +6,5 @@
       = link_to (image_tag content.file_url(:thumb)), content.file_url
     - if content.file.content_type.include? 'pdf'
       = link_to (image_tag content.file_url(:thumb_pdf)), content.file_url
-  = content.name
 %br
   = link_to "New Content", new_content_path

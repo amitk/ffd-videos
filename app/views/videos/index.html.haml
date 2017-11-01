@@ -1,0 +1,5 @@
+- @videos.each do |video|
+  = link_to (image_tag video.file_url(:thumb_video)), video.file_url
+
+%br
+  = link_to "Go to Content", contents_path

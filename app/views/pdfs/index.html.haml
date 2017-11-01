@@ -1,0 +1,5 @@
+- @pdfs.each do |pdf|
+  = link_to (image_tag pdf.file_url(:thumb_pdf)), pdf.file_url
+
+%br
+  = link_to "Go to Content", contents_path

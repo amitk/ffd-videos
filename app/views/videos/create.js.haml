@@ -1,0 +1,4 @@
+- if @video.new_record?
+  alert("Failed to upload video #{ j @video.errors.full_messages.join(',').html_safe}")
+- else
+  $("#videos").append("#{ j render(@video)}")

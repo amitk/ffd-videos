@@ -1,0 +1,4 @@
+- if @pdf.new_record?
+  alert("Failed to upload Pdf: #{ j @pdf.errors.full_messages.join(',').html_safe}");
+- else
+  $("#pdfs").append("#{ j render(@pdf) }")

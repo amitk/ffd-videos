@@ -14,6 +14,8 @@ class VideosController < ApplicationController
     else
       p @video.errors
     end
+    index
+    render :index
   end
 
   private

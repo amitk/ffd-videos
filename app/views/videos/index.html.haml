@@ -1,5 +1,8 @@
 - @videos.each do |video|
   = link_to (image_tag video.file_url(:thumb_video)), video.file_url
 
+= simple_form_for Video.new, url: videos_path do |f|
+  = f.input :file, as: :file, input_html: { multiple: true, name: "video[file]"}
+  = f.button :submit
 %br
   = link_to "Go to Content", contents_path

@@ -17,6 +17,7 @@ class ContentsController < ApplicationController
     else
       create_pdf(content)
     end
+    render :new
   end
 
   private

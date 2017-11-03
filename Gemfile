@@ -14,6 +14,8 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# gem to automate jquery in rails
+gem 'jquery-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
@@ -48,6 +50,8 @@ gem 'carrierwave-video'
 gem 'carrierwave-video-thumbnailer'
 # gem to create forms in rails application
 gem 'simple_form'
+# gem to imbedd file upload with jquery
+gem 'jquery-fileupload-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

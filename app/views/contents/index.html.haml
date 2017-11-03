@@ -2,4 +2,8 @@
   = link_to "Video Content", videos_path
   = link_to "Pdf Content", pdfs_path
 %br
-  = link_to "Upload new Content", new_content_path
+  = link_to "Create new content", new_content_path
+-#
+  = simple_form_for Content.new, url: contents_path do |f|
+    = f.input :file, as: :file, input_html: { multiple: true, name: "content[file]"}
+    = f.button :submit

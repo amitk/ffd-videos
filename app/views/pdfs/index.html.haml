@@ -4,12 +4,20 @@
 
 = simple_form_for Pdf.new, url: pdfs_path do |f|
   = f.input :file, as: :file, input_html: { multiple: true, name: "pdf[file]"}
+  = f.button :submit, 'Upload pdf'
 %br
   = link_to "Go to Content", contents_path
+
+%div#files
+
+%div#progress
+  .bar{:style => "width: 0%;"}
+
+
 -#
   %script#template-upload{:type => "text/x-tmpl"}
     :cdata
       <div class="upload">
       {%=o.name%}
-      <div class="progress"><div class="bar" style="width: 0%"></div></div>
+      <div class="progress"><div class="bar" style="height:20px;width: 0%;background-color:red"></div></div>
       </div>

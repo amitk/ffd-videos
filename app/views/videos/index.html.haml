@@ -7,3 +7,11 @@
   = f.button :submit
 %br
   = link_to "Go to Content", contents_path
+
+%br
+  %script#template-upload{:type => "text/x-tmpl"}
+    :cdata
+      <div class="upload">
+      {%=o.name%}
+      <div class="progress"><div class="bar" style="height:20px;width: 0%;background-color:red"></div></div>
+      </div>

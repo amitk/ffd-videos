@@ -8,12 +8,8 @@ class PdfsController < ApplicationController
   end
 
   def create
-    @pdf = Pdf.new(pdf_content)
-    if @pdf.valid?
-      @pdf.save
-    else
-      p @pdf.errors
-    end
+    @pdf = Pdf.create(pdf_content)
+    render json: {message: 'file uploaded successfully!'}
   end
 
   private

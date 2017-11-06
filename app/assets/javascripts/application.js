@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require bootstrap-sprockets
 //= require_tree .

@@ -8,12 +8,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
-    if @video.valid?
-      @video.save
-    else
-      p @video.errors
-    end
+    @video = Video.create(video_params)
     index
     render :index
   end

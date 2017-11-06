@@ -1,0 +1,6 @@
+= simple_form_for Pdf.new do |f|
+  = f.input :category, collection: CATEGORY
+  = f.input :view_limit
+  = f.input :view_span
+  = f.input :file, as: :file
+  = f.button :submit, 'Upload pdf', id: 'upload'

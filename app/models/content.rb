@@ -7,6 +7,9 @@ class Content
   field :view_limit,  type: Integer, default: nil
   # To set the time span for viewing subscribed video
   field :view_span,   type: Integer, default: nil
+  
+  field :name,        type: String
+
 
   has_many :user_contents
 
@@ -18,7 +21,7 @@ class Content
   validates :category, inclusion: { in: %w(free registered subscribed) }
   validate :view_limit_or_span
 
-  mount_uploader :file, FileUploader
+  # mount_uploader :file, FileUploader
 
   private
 

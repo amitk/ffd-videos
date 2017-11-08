@@ -1,6 +1,3 @@
-= simple_form_for Pdf.new do |f|
-  = f.input :category, collection: CATEGORY
-  = f.input :view_limit
-  = f.input :view_span
-  = f.input :file, as: :file
-  = f.button :submit, 'Upload pdf', id: 'upload'
+= form_for(Pdf.new, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f|
+  = f.label :provide_pdf
+  = f.file_field :pdf
